@@ -644,7 +644,71 @@
     .methods-grid { grid-template-columns: 1fr 1fr; }
   }
 
-  /* ── CLICKABLE CHIP ENHANCEMENTS ── */
+  /* ── DEGREE ROADMAP SLIDE ── */
+  .rdm-legend { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:14px; }
+  .rdm-leg { display:flex; align-items:center; gap:6px; font-family:var(--mono); font-size:.68rem; color:var(--muted); }
+  .rdm-dot { width:8px; height:8px; border-radius:2px; flex-shrink:0; }
+
+  .rdm-year-hdr { display:flex; align-items:center; gap:10px; margin:14px 0 8px; }
+  .rdm-yr-pill { font-family:var(--mono); font-size:.68rem; font-weight:700; padding:3px 10px; border-radius:100px; white-space:nowrap; }
+  .rdm-y1 { background:#EEEDFE; color:#3C3489; border:1px solid #AFA9EC; }
+  .rdm-y2 { background:#1a2e22; color:#9FE1CB; border:1px solid #0F6E56; }
+  .rdm-y3 { background:#2e1a14; color:#F5C4B3; border:1px solid #993C1D; }
+  .rdm-yr-line { flex:1; height:1px; background:var(--border); }
+
+  .rdm-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(158px,1fr)); gap:8px; margin-bottom:6px; }
+
+  .rdm-card {
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:12px 14px;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+    transition:transform .2s, border-color .2s;
+  }
+  .rdm-card:hover { transform:translateY(-3px); border-color:var(--accent); }
+  .rdm-card.rdm-hl { border-color:#7F77DD; background:#1a1830; }
+  .rdm-card-accent { position:absolute; top:0;left:0;right:0;height:2px; }
+  .rdm-card-code { font-family:var(--mono); font-size:.62rem; color:var(--muted); letter-spacing:.07em; margin-bottom:4px; }
+  .rdm-card-name { font-size:.78rem; font-weight:700; color:var(--text); line-height:1.3; margin-bottom:6px; }
+  .rdm-card-tag { font-size:.6rem; font-weight:700; padding:2px 6px; border-radius:4px; display:inline-block; margin-bottom:4px; }
+  .rdm-card-lo { font-family:var(--mono); font-size:.6rem; color:var(--muted); margin-top:2px; }
+
+  .rdm-arrow-row { display:flex; align-items:center; justify-content:center; gap:8px; margin:6px 0; }
+  .rdm-arr-line { flex:1; max-width:180px; height:1px; background:var(--border); position:relative; }
+  .rdm-arr-line::after { content:''; position:absolute; right:-4px; top:-3px; border:4px solid transparent; border-left:5px solid var(--border); }
+  .rdm-flip { transform:scaleX(-1); }
+  .rdm-arr-lbl { font-family:var(--mono); font-size:.65rem; color:var(--muted); white-space:nowrap; }
+
+  .rdm-detail {
+    display:none;
+    margin-top:14px;
+    background:#16162a;
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px 24px;
+    position:relative;
+  }
+  .rdm-detail.open { display:block; }
+  .rdm-detail-close { position:absolute; top:12px; right:12px; background:var(--card); border:1px solid var(--border); color:var(--muted); width:28px; height:28px; border-radius:50%; cursor:pointer; font-size:.8rem; }
+  .rdm-detail-top { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:10px; }
+  .rdm-detail-code { font-family:var(--mono); font-size:.68rem; color:var(--accent); letter-spacing:.1em; margin-bottom:3px; }
+  .rdm-detail-title { font-size:1rem; font-weight:700; color:var(--text); }
+  .rdm-detail-badge { font-family:var(--mono); font-size:.65rem; padding:3px 9px; border-radius:6px; white-space:nowrap; }
+  .rdm-detail-desc { font-family:var(--mono); font-size:.75rem; color:var(--muted); line-height:1.8; margin-bottom:14px; border-bottom:1px solid var(--border); padding-bottom:12px; }
+  .rdm-detail-lbl { font-family:var(--mono); font-size:.65rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+  .rdm-detail-topics { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:12px; }
+  .rdm-detail-topic { font-family:var(--mono); font-size:.72rem; color:var(--muted); background:var(--card); border-radius:8px; padding:7px 10px; line-height:1.5; border-left:2px solid var(--border); }
+  .rdm-detail-footer { font-family:var(--mono); font-size:.72rem; color:var(--muted); line-height:1.8; }
+  .rdm-detail-footer strong { color:var(--accent3); }
+
+  @media (max-width:600px) {
+    .rdm-grid { grid-template-columns:1fr 1fr; }
+    .rdm-detail-topics { grid-template-columns:1fr; }
+  }
+</style>
   .topic-chip.clickable { cursor: pointer; position: relative; }
   .topic-chip.clickable:hover {
     transform: scale(1.04);
@@ -815,6 +879,7 @@
   <button class="nav-dot" onclick="goTo(5)"></button>
   <button class="nav-dot" onclick="goTo(6)"></button>
   <button class="nav-dot" onclick="goTo(7)"></button>
+  <button class="nav-dot" onclick="goTo(8)"></button>
 </nav>
 
 <!-- ═══════════════════════════════════════
@@ -1239,9 +1304,75 @@
 </section>
 
 <!-- ═══════════════════════════════════════
-     SLIDE 8 — READY
+     SLIDE 8 — DEGREE ROADMAP
 ═══════════════════════════════════════ -->
-<section class="slide" id="slide-8">
+<section class="slide" id="slide-8" style="align-items:flex-start;padding:48px 24px 40px;">
+  <div class="section-inner" style="max-width:1100px;">
+    <p class="section-eyebrow animate-on-enter">BSc Ethical Hacking · 3 years · 18 modules</p>
+    <h2 class="section-title animate-on-enter">Where this takes <em>you</em></h2>
+
+    <div id="rdm-wrap">
+
+      <!-- LEGEND -->
+      <div class="rdm-legend stagger">
+        <div class="rdm-leg"><div class="rdm-dot" style="background:#7F77DD"></div>You are here</div>
+        <div class="rdm-leg"><div class="rdm-dot" style="background:#D85A30"></div>Security &amp; hacking</div>
+        <div class="rdm-leg"><div class="rdm-dot" style="background:#1D9E75"></div>Networking &amp; systems</div>
+        <div class="rdm-leg"><div class="rdm-dot" style="background:#534AB7"></div>Core CS</div>
+        <div class="rdm-leg"><div class="rdm-dot" style="background:#BA7517"></div>Legal &amp; management</div>
+        <div class="rdm-leg"><div class="rdm-dot" style="background:#D4537E"></div>Advanced / specialist</div>
+      </div>
+
+      <!-- YEAR 1 -->
+      <div class="rdm-year-hdr stagger">
+        <span class="rdm-yr-pill rdm-y1">Year 1 — Level 4</span>
+        <div class="rdm-yr-line"></div>
+      </div>
+      <div class="rdm-grid stagger" id="rdm-y1"></div>
+
+      <div class="rdm-arrow-row"><div class="rdm-arr-line"></div><span class="rdm-arr-lbl">builds into</span><div class="rdm-arr-line rdm-flip"></div></div>
+
+      <!-- YEAR 2 -->
+      <div class="rdm-year-hdr stagger">
+        <span class="rdm-yr-pill rdm-y2">Year 2 — Level 5</span>
+        <div class="rdm-yr-line"></div>
+      </div>
+      <div class="rdm-grid stagger" id="rdm-y2"></div>
+
+      <div class="rdm-arrow-row"><div class="rdm-arr-line"></div><span class="rdm-arr-lbl">builds into</span><div class="rdm-arr-line rdm-flip"></div></div>
+
+      <!-- YEAR 3 -->
+      <div class="rdm-year-hdr stagger">
+        <span class="rdm-yr-pill rdm-y3">Year 3 — Level 6</span>
+        <div class="rdm-yr-line"></div>
+      </div>
+      <div class="rdm-grid stagger" id="rdm-y3"></div>
+
+    </div>
+
+    <!-- MODULE DETAIL PANEL -->
+    <div class="rdm-detail" id="rdm-detail">
+      <button class="rdm-detail-close" onclick="closeRdm()">✕</button>
+      <div class="rdm-detail-top">
+        <div>
+          <div class="rdm-detail-code" id="rdm-code"></div>
+          <div class="rdm-detail-title" id="rdm-dtitle"></div>
+        </div>
+        <div class="rdm-detail-badge" id="rdm-badge"></div>
+      </div>
+      <div class="rdm-detail-desc" id="rdm-desc"></div>
+      <div class="rdm-detail-lbl">What you'll learn</div>
+      <div class="rdm-detail-topics" id="rdm-topics"></div>
+      <div class="rdm-detail-footer" id="rdm-footer"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SLIDE 9 — READY
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-9">
   <div class="grid-bg"></div>
   <div class="orb" style="width:400px;height:400px;background:radial-gradient(circle,rgba(124,92,252,.2),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);animation:pulse 3s ease-in-out infinite"></div>
 
@@ -1517,6 +1648,137 @@
   function closeModal(e) {
     if (e.target === modal) closeModalBtn();
   }
+  // ── DEGREE ROADMAP ──────────────────────────────────────────
+  const RDM_CAT = {
+    found: { color:'#7F77DD', tagBg:'#2a2450', tagText:'#AFA9EC', label:'foundation' },
+    sec:   { color:'#D85A30', tagBg:'#2e1a10', tagText:'#F0997B', label:'security' },
+    net:   { color:'#1D9E75', tagBg:'#0d2a1e', tagText:'#5DCAA5', label:'networking' },
+    cs:    { color:'#534AB7', tagBg:'#1e1c3a', tagText:'#AFA9EC', label:'core cs' },
+    legal: { color:'#BA7517', tagBg:'#2a1e08', tagText:'#EF9F27', label:'legal' },
+    adv:   { color:'#D4537E', tagBg:'#2a1020', tagText:'#ED93B1', label:'advanced' },
+  };
+
+  const RDM_MODS = {
+    y1:[
+      { code:'ST4014CMD', name:'Cyber Security Fundamentals', cat:'sec', lo:'LOs: 1,2,6,10',
+        desc:'Entry point into the security mindset. CIA triad, threat landscapes, attack types, and the vocabulary every ethical hacker must know before touching a tool.',
+        topics:['CIA triad & security principles','Threat actors & motivations','Attack types: phishing, MITM, DoS','Malware categories & behaviour','Security controls overview','Risk & vulnerability basics'],
+        feeds:'Underpins every security module in Years 2 & 3', link:'Links to ST4015CMD: cryptography, data integrity' },
+      { code:'ST4017CMD', name:'Introduction to Programming', cat:'cs', lo:'LOs: 4,10',
+        desc:'Ethical hackers write tools, scripts, and exploits. Python is the language of the security industry. This module gives you the programming foundation every hacker needs.',
+        topics:['Python syntax & data types','Control flow & functions','File I/O & modules','Object-oriented programming','Writing CLI tools & scripts','Automating security tasks'],
+        feeds:'Scripting pentests, exploit dev, custom tooling in Years 2 & 3', link:'Links to ST4015CMD: algorithms, encoding, Boolean logic' },
+      { code:'ST4018CMD', name:'Networking and Computer Architectures', cat:'net', lo:'LOs: 1,6,7',
+        desc:'You cannot attack a network you don\'t understand. TCP/IP, subnetting, and hardware architecture form the backbone of all network-based exploitation.',
+        topics:['OSI & TCP/IP models','IP addressing & subnetting','DNS, HTTP, ARP protocols','Routing & switching','CPU & memory architecture','Packet structure & analysis'],
+        feeds:'Network pentesting, MITM, packet sniffing in Year 2', link:'Links to ST4015CMD: binary/hex, storage & architecture' },
+      { code:'ST4016CMD', name:'Information Security Management', cat:'legal', lo:'LOs: 3,8,10',
+        desc:'Security is not just technical — it is organisational. Frameworks, policies, risk management, and governance that inform all professional security work.',
+        topics:['ISO 27001 & NIST frameworks','Risk assessment & treatment','Security policies & procedures','Business continuity planning','Incident management basics','Governance & compliance'],
+        feeds:'Security operations, audit & risk management in Year 3', link:'Links to ST4015CMD: data storage, cryptographic controls' },
+      { code:'ST4019CMD', name:'Ethics and Legal Framework of Cyber Security', cat:'legal', lo:'LOs: 7,9,10,11',
+        desc:'The "ethical" in ethical hacking is not optional. Computer Misuse Act, GDPR, responsible disclosure — this keeps you legal. Every pentest starts with a contract.',
+        topics:['Computer Misuse Act 1990','GDPR & data protection','Responsible disclosure & CVEs','Penetration testing contracts','Bug bounty legal considerations','Professional ethics'],
+        feeds:'Professional framework for all engagements across Years 2 & 3', link:'Links to ST4015CMD: cryptography & data protection laws' },
+      { code:'ST4015CMD', name:'Foundations of Computer Science', cat:'found', lo:'LOs: 1,6,10', highlight:true,
+        desc:'The bedrock of the entire degree. Logic, cryptography, number systems, databases, algorithms — every hacking technique ultimately reduces to concepts taught here.',
+        topics:['Boolean logic & truth tables','Set theory & data modelling','Binary, hex & number systems','Encoding: ASCII, UTF-8, Base64','Hashing (SHA-256) & PKI','State machines','Databases & SQL','Algorithmic complexity & Big-O','Incomputable problems'],
+        feeds:'Directly feeds every technical module across Years 2 & 3', link:'Core foundation — all arrows lead from here' },
+    ],
+    y2:[
+      { code:'ST5038CMD', name:'Practical Penetration Testing', cat:'sec', lo:'LOs: 1,2,10',
+        desc:'The centrepiece of Year 2. Structured methodology for legally attacking systems — recon, scanning, exploitation, post-exploitation, and professional reporting.',
+        topics:['Pentest methodology (PTES)','Reconnaissance & OSINT','Scanning: Nmap & Nessus','Exploitation with Metasploit','Post-exploitation & pivoting','Professional pentest reporting'],
+        feeds:'Advanced Penetration Testing (ST6036CMD) in Year 3', link:'Directly applies ST4015CMD: algorithms, encoding, crypto' },
+      { code:'ST5039CMD', name:'Programming and Operating Systems', cat:'cs', lo:'LOs: 1,4,6',
+        desc:'Attacks target operating systems. Understanding processes, memory, permissions, and Linux/Windows internals is essential for privilege escalation and exploit dev.',
+        topics:['Advanced Python for security','Linux internals & CLI','Windows architecture & registry','Process & memory management','File systems & permissions','Shell scripting & automation'],
+        feeds:'Exploit Development & Reverse Engineering (ST6041CMD)', link:'Builds on ST4015CMD: storage, architecture, number systems' },
+      { code:'ST5037CMD', name:'Foundations of Networking', cat:'net', lo:'LOs: 1,5,7',
+        desc:'Deep-dive networking — moving from how networks work to how they are attacked. Firewalls, VPNs, wireless security, and network-layer exploitation.',
+        topics:['Advanced TCP/IP & protocols','Firewall architecture & bypass','Wireless security (WPA2/WPA3)','MITM & ARP poisoning','VPN protocols & weaknesses','Network traffic analysis & IDS'],
+        feeds:'Advanced Penetration Testing in Year 3', link:'Builds on ST4018CMD & ST4015CMD binary/encoding knowledge' },
+      { code:'ST5040CMD', name:'Security Operations', cat:'sec', lo:'LOs: 3,10',
+        desc:'The blue team perspective — SIEM, monitoring, threat detection, and incident response. Every great attacker understands how defenders work.',
+        topics:['SIEM tools (Splunk, ELK)','Log analysis & correlation','Threat detection & alerting','Vulnerability management','Security monitoring workflows','SOC roles & escalation'],
+        feeds:'Digital Security Risk & Audit (ST6038CMD) in Year 3', link:'Applies ST4015CMD: hashing for integrity, algorithms for detection' },
+      { code:'ST5036CMD', name:'Digital Forensics', cat:'sec', lo:'LOs: 1,3,8',
+        desc:'Recovering evidence after an attack — disk & memory forensics, file system analysis, and understanding the artefacts attackers leave behind.',
+        topics:['Evidence acquisition & custody','Disk imaging & analysis','Memory forensics (Volatility)','File system & metadata analysis','Network forensics & PCAP','Forensic reporting'],
+        feeds:'Reverse Engineering (ST6041CMD), Research Project in Year 3', link:'Applies ST4015CMD: encoding, file storage, hashing' },
+      { code:'ST5041CMD', name:'The Internet and Web Technologies', cat:'net', lo:'LOs: 1,2,4',
+        desc:'The web is the largest attack surface on Earth. OWASP Top 10, Burp Suite, and hands-on exploitation of SQL injection, XSS, CSRF, and auth flaws.',
+        topics:['HTTP/HTTPS & web architecture','OWASP Top 10 in depth','SQL injection & bypasses','XSS, CSRF, SSRF attacks','Burp Suite interception','API security & testing'],
+        feeds:'Advanced Penetration Testing (ST6036CMD) in Year 3', link:'Directly applies ST4015CMD: databases, cryptography, encoding' },
+    ],
+    y3:[
+      { code:'ST6036CMD', name:'Advanced Penetration Testing', cat:'adv', lo:'LOs: 1,2,11',
+        desc:'Multi-stage adversary simulation against defended enterprise networks — Active Directory attacks, C2 infrastructure, defence evasion, and red team operations.',
+        topics:['Red team methodology','Active Directory attacks','C2 frameworks (Cobalt Strike)','Living off the land (LOLBins)','Defence evasion & obfuscation','Red team engagement reporting'],
+        feeds:'Career: red team analyst, offensive security engineer', link:'Culmination of all Years 1 & 2 technical knowledge' },
+      { code:'ST6041CMD', name:'Reverse Engineering and Exploit Development', cat:'adv', lo:'LOs: 1,2,5',
+        desc:'Reverse engineering binaries, finding vulnerabilities, and weaponising them. Built directly on OS, programming, and CS foundations from Year 1.',
+        topics:['x86/x64 assembly language','Ghidra & IDA Pro static analysis','Dynamic analysis & debugging','Buffer overflow exploitation','ROP chains & shellcode writing','CVE analysis & PoC development'],
+        feeds:'Career: vulnerability researcher, exploit developer', link:'Directly applies ST4015CMD: binary arithmetic, algorithms' },
+      { code:'ST6038CMD', name:'Digital Security Risk and Audit Management', cat:'adv', lo:'LOs: 3,10',
+        desc:'Enterprise security governance at senior level — risk frameworks, audit methodologies, compliance, and advising organisations on their security posture.',
+        topics:['ISO 27001 & SOC 2 auditing','Risk quantification (FAIR model)','Pentest programme management','Compliance: PCI-DSS, HIPAA, GDPR','Security audit reporting','Board-level communication'],
+        feeds:'Career: CISO advisory, security consultant, audit manager', link:'Builds on ST4016CMD & ST4019CMD management foundations' },
+      { code:'ST6037CMD', name:'Applied Cryptography', cat:'adv', lo:'LOs: 1,5,10',
+        desc:'The advanced successor to ST4015CMD\'s cryptography topics — deep mathematics of breaking and implementing cryptographic systems, from RSA to post-quantum.',
+        topics:['RSA & ECC mathematics','TLS internals & downgrade attacks','Password cracking (hashcat)','Cryptographic implementation flaws','Post-quantum cryptography','Steganography & covert channels'],
+        feeds:'Career: cryptanalyst, security researcher, PKI engineer', link:'Direct extension of ST4015CMD: hashing, PKI, encoding' },
+      { code:'ST6040CMD', name:'Research Project Preparation', cat:'adv', lo:'LOs: 8,11',
+        desc:'Designing and scoping an independent security research project — literature review, ethical approval, research methodology, and academic writing fundamentals.',
+        topics:['Research question formulation','Academic literature review','Ethical approval for hacking research','Research methodology design','Academic writing & referencing','Project planning & supervision'],
+        feeds:'Directly leads into Research Project Delivery (ST6039CMD)', link:'Draws on all prior technical and management knowledge' },
+      { code:'ST6039CMD', name:'Research Project Delivery', cat:'adv', lo:'LOs: 8,11',
+        desc:'Execution and delivery of the independent research project — novel vulnerability discovery, tool development, or empirical security study, plus full dissertation and viva.',
+        topics:['Novel research execution','Tool or exploit development','Empirical data collection & analysis','Dissertation writing (10–15k words)','Presentation & viva defence','CVE submission pathway'],
+        feeds:'Career: MSc pathway, researcher, CVE credits, publications', link:'Capstone — synthesises the entire BSc Ethical Hacking programme' },
+    ]
+  };
+
+  function rdmRender(year, id) {
+    const grid = document.getElementById(id);
+    if (!grid) return;
+    RDM_MODS[year].forEach((m, i) => {
+      const c = RDM_CAT[m.cat];
+      const card = document.createElement('div');
+      card.className = 'rdm-card' + (m.highlight ? ' rdm-hl' : '');
+      card.onclick = () => rdmOpen(year, i);
+      card.innerHTML = `<div class="rdm-card-accent" style="background:${c.color}"></div>
+        <div class="rdm-card-code">${m.code}</div>
+        <div class="rdm-card-name">${m.name}</div>
+        <span class="rdm-card-tag" style="background:${c.tagBg};color:${c.tagText}">${c.label}</span>
+        <div class="rdm-card-lo">${m.lo}</div>`;
+      grid.appendChild(card);
+    });
+  }
+
+  function rdmOpen(year, i) {
+    const m = RDM_MODS[year][i];
+    const c = RDM_CAT[m.cat];
+    document.getElementById('rdm-code').textContent   = m.code + ' · Level ' + (year==='y1'?'4':year==='y2'?'5':'6') + ' · 20 credits · Mandatory';
+    document.getElementById('rdm-dtitle').textContent = m.name;
+    document.getElementById('rdm-desc').textContent   = m.desc;
+    const badge = document.getElementById('rdm-badge');
+    badge.textContent = m.lo;
+    badge.style.background = c.tagBg;
+    badge.style.color = c.tagText;
+    document.getElementById('rdm-topics').innerHTML = m.topics.map(t=>`<div class="rdm-detail-topic">${t}</div>`).join('');
+    document.getElementById('rdm-footer').innerHTML = `<strong>Career pathway:</strong> ${m.feeds}<br><strong>Foundation link:</strong> ${m.link}`;
+    const panel = document.getElementById('rdm-detail');
+    panel.style.borderColor = c.color;
+    panel.classList.add('open');
+    setTimeout(() => panel.scrollIntoView({ behavior:'smooth', block:'nearest' }), 50);
+  }
+
+  function closeRdm() { document.getElementById('rdm-detail').classList.remove('open'); }
+
+  rdmRender('y1','rdm-y1');
+  rdmRender('y2','rdm-y2');
+  rdmRender('y3','rdm-y3');
 </script>
 </body>
 </html>
