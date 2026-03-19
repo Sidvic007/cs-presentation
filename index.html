@@ -709,6 +709,160 @@
     .rdm-detail-topics { grid-template-columns:1fr; }
   }
 </style>
+  <style>
+  .topic-chip.clickable { cursor: pointer; position: relative; }
+  .topic-chip.clickable:hover {
+    transform: scale(1.04);
+    border-color: var(--accent);
+    background: #20203a;
+    box-shadow: 0 0 0 1px var(--accent), 0 8px 24px rgba(124,92,252,.2);
+  }
+  .chip-arrow {
+    margin-left: auto;
+    font-size: .85rem;
+    color: var(--accent);
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity .2s, transform .2s;
+    flex-shrink: 0;
+  }
+  .topic-chip.clickable:hover .chip-arrow { opacity: 1; transform: translateX(0); }
+
+  /* ── MODAL ── */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.75);
+    backdrop-filter: blur(8px);
+    z-index: 5000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease;
+  }
+  .modal-backdrop.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .modal-box {
+    background: #16162a;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 36px;
+    max-width: 560px;
+    width: 100%;
+    position: relative;
+    transform: translateY(20px) scale(.97);
+    transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+  .modal-backdrop.open .modal-box {
+    transform: translateY(0) scale(1);
+  }
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: .85rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .2s;
+  }
+  .modal-close:hover { background: var(--accent2); color: #fff; border-color: var(--accent2); }
+
+  .modal-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 20px;
+  }
+  .modal-icon {
+    font-size: 2.6rem;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 56px; height: 56px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .modal-week {
+    font-family: var(--mono);
+    font-size: .7rem;
+    color: var(--accent);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .modal-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    color: var(--text);
+  }
+  .modal-desc {
+    font-family: var(--mono);
+    font-size: .82rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .modal-topics {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .modal-topic-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 13px 16px;
+    transition: border-color .2s;
+  }
+  .modal-topic-row:hover { border-color: var(--accent); }
+  .mtr-bullet {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+  .mtr-content .mtr-title {
+    font-size: .88rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+  .mtr-content .mtr-detail {
+    font-family: var(--mono);
+    font-size: .73rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .modal-outcome {
+    background: linear-gradient(135deg, rgba(124,92,252,.12), rgba(92,244,252,.06));
+    border: 1px solid rgba(124,92,252,.3);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-family: var(--mono);
+    font-size: .78rem;
+    color: var(--accent3);
+    line-height: 1.7;
+  }
+  .modal-outcome strong { color: var(--accent); font-weight: 700; }
 </style>
 </head>
 <body>
@@ -1238,7 +1392,7 @@
 
     <div class="college-tag">
       Softwarica College of IT &amp; E-Commerce &nbsp;·&nbsp;
-      <span><a href = "https://c4mpus.com/" target="_blank">Main Campus</a></span> &nbsp;·&nbsp; Level 4 Module
+      <span>Main Campus</span> &nbsp;·&nbsp; Level 4 Module
     </div>
   </div>
 </section>
