@@ -1135,26 +1135,7 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     TOPIC MODAL
-═══════════════════════════════════════ -->
-<div id="topicModal" class="modal-backdrop" onclick="closeModal(event)">
-  <div class="modal-box" id="modalBox">
-    <button class="modal-close" onclick="closeModalBtn()">✕</button>
-    <div class="modal-header">
-      <span class="modal-icon" id="modalIcon"></span>
-      <div>
-        <div class="modal-week" id="modalWeek"></div>
-        <h2 class="modal-title" id="modalTitle"></h2>
-      </div>
-    </div>
-    <p class="modal-desc" id="modalDesc"></p>
-    <div class="modal-topics" id="modalTopics"></div>
-    <div class="modal-outcome" id="modalOutcome"></div>
-  </div>
-</div>
-  </div>
-</section>
+
 
 <!-- ═══════════════════════════════════════
      SLIDE 5 — HOW YOU'LL LEARN
@@ -1780,5 +1761,24 @@
   rdmRender('y2','rdm-y2');
   rdmRender('y3','rdm-y3');
 </script>
+<!-- ═══════════════════════════════════════
+     TOPIC MODAL (outside all slides)
+═══════════════════════════════════════ -->
+<div id="topicModal" class="modal-backdrop" onclick="closeModal(event)">
+  <div class="modal-box" id="modalBox">
+    <button class="modal-close" onclick="closeModalBtn()">✕</button>
+    <div class="modal-header">
+      <span class="modal-icon" id="modalIcon"></span>
+      <div>
+        <div class="modal-week" id="modalWeek"></div>
+        <h2 class="modal-title" id="modalTitle"></h2>
+      </div>
+    </div>
+    <p class="modal-desc" id="modalDesc"></p>
+    <div class="modal-topics" id="modalTopics"></div>
+    <div class="modal-outcome" id="modalOutcome"></div>
+  </div>
+</div>
+
 </body>
 </html>
