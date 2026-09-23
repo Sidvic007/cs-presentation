@@ -4,21 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ST4015CMD — Foundations of Computer Science</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0a0a0f;
-  --surface: #12121a;
-  --card: #1a1a26;
-  --border: #2a2a3e;
-  --accent: #7c5cfc;
-  --accent2: #fc5c7d;
-  --accent3: #5cf4fc;
-  --accent4: #fcbc5c;
-  --text: #e8e8f0;
-  --muted: #888899;
-  --mono: 'Space Mono', monospace;
-  --display: 'Syne', sans-serif;
+  --bg: #ffffff;
+  --surface: #f6f7f9;
+  --card: #fbfbfd;
+  --border: #e4e6ec;
+  --accent: #4f6df5;
+  --accent2: #e2708a;
+  --accent3: #2f9e94;
+  --accent4: #d69e4e;
+  --text: #24272e;
+  --muted: #6b7280;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
@@ -27,16 +27,6 @@ body {
   color: var(--text);
   font-family: var(--display);
   overflow-x: hidden;
-}
-/* ── NOISE OVERLAY ── */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.4;
 }
 /* ── NAV DOTS ── */
 .nav-dots {
@@ -73,7 +63,7 @@ body::before {
 #slide-1 {
   flex-direction: column;
   text-align: center;
-  background: radial-gradient(ellipse 80% 60% at 50% 40%, #1a0f3a 0%, var(--bg) 70%);
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, #eef1ff 0%, var(--bg) 70%);
 }
 .hero-tag {
   font-family: var(--mono);
@@ -138,6 +128,45 @@ body::before {
   text-transform: uppercase;
   letter-spacing: .1em;
   margin-top: 2px;
+}
+.teaching-team {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 36px;
+  padding: 14px 26px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  animation: fadeUp .6s .35s ease both;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.team-member {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.team-role {
+  font-family: var(--mono);
+  font-size: .68rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+}
+.team-name {
+  font-size: .88rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.team-divider {
+  width: 1px;
+  height: 16px;
+  background: var(--border);
+}
+@media (max-width: 500px) {
+  .team-divider { display: none; }
+  .teaching-team { flex-direction: column; gap: 10px; padding: 16px 24px; }
 }
 .scroll-hint {
   position: absolute;
@@ -245,7 +274,7 @@ body::before {
 }
 /* ── SLIDE 3: LEARNING OUTCOMES ── */
 #slide-3 {
-  background: radial-gradient(ellipse 70% 50% at 30% 50%, #0f2a1a 0%, var(--bg) 70%);
+  background: radial-gradient(ellipse 70% 50% at 30% 50%, #eef9f2 0%, var(--bg) 70%);
 }
 .lo-list { display: flex; flex-direction: column; gap: 20px; }
 .lo-item {
@@ -275,7 +304,7 @@ body::before {
   flex-shrink: 0;
 }
 .lo-badge.b2 { background: var(--accent2); }
-.lo-badge.b3 { background: var(--accent4); color: #1a1000; }
+.lo-badge.b3 { background: var(--accent4); color: #3d2a10; }
 .lo-text h3 {
   font-size: 1.05rem;
   font-weight: 700;
@@ -316,8 +345,8 @@ body::before {
 .topic-chip.clickable:hover {
   transform: scale(1.04);
   border-color: var(--accent);
-  background: #20203a;
-  box-shadow: 0 0 0 1px var(--accent), 0 8px 24px rgba(124,92,252,.2);
+  background: #eef1fd;
+  box-shadow: 0 0 0 1px var(--accent), 0 8px 24px rgba(79,109,245,.18);
 }
 .topic-chip .t-icon {
   font-size: 1.4rem;
@@ -369,7 +398,7 @@ body::before {
 .phase-line { flex: 1; height: 1px; background: var(--border); }
 /* ── SLIDE 5: HOW YOU'LL LEARN ── */
 #slide-5 {
-  background: radial-gradient(ellipse 70% 50% at 70% 50%, #1a0a0f 0%, var(--bg) 70%);
+  background: radial-gradient(ellipse 70% 50% at 70% 50%, #fdf1f3 0%, var(--bg) 70%);
 }
 .methods-grid {
   display: grid;
@@ -391,7 +420,7 @@ body::before {
 }
 .method-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(124,92,252,.15);
+  box-shadow: 0 20px 40px rgba(79,109,245,.12);
   border-color: var(--accent);
 }
 .method-card .m-icon { font-size: 2.2rem; margin-bottom: 12px; display: block; }
@@ -449,9 +478,58 @@ body::before {
 }
 .credit-box .cv { font-family: var(--mono); font-size: 1.5rem; font-weight: 700; color: var(--accent3); display: block; }
 .credit-box .ck { font-size: .7rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-top: 2px; }
+/* ── SLIDE 6b: ASSESSMENT COMPONENTS & RESOURCES ── */
+#slide-6b { background: var(--surface); }
+.assess-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .78rem;
+  margin-bottom: 18px;
+}
+.assess-table th, .assess-table td {
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.assess-table th {
+  font-family: var(--mono);
+  font-size: .65rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--muted);
+  font-weight: 700;
+}
+.assess-table td { color: var(--text); }
+.assess-table td.mono, .assess-table td.center { font-family: var(--mono); text-align: center; }
+.assess-note {
+  font-family: var(--mono);
+  font-size: .78rem;
+  color: var(--muted);
+  line-height: 1.8;
+}
+.assess-note strong { color: var(--text); }
+.assess-note + .assess-note { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
+.reading-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.reading-list li {
+  font-family: var(--mono);
+  font-size: .8rem;
+  color: var(--muted);
+  line-height: 1.6;
+  padding-left: 18px;
+  position: relative;
+}
+.reading-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+.reading-list a { color: var(--accent); text-decoration: none; }
+.reading-list a:hover { text-decoration: underline; }
 /* ── SLIDE 7: FUN FACTS / WHY CS ── */
 #slide-7 {
-  background: radial-gradient(ellipse 80% 60% at 50% 60%, #12082a 0%, var(--bg) 65%);
+  background: radial-gradient(ellipse 80% 60% at 50% 60%, #f3effb 0%, var(--bg) 65%);
   flex-direction: column;
   text-align: center;
   gap: 40px;
@@ -491,7 +569,7 @@ body::before {
 #slide-8 {
   flex-direction: column;
   text-align: center;
-  background: radial-gradient(ellipse 60% 50% at 50% 50%, #1a0f3a 0%, var(--bg) 70%);
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, #eef1ff 0%, var(--bg) 70%);
 }
 .ready-title {
   font-size: clamp(2.5rem, 8vw, 5.5rem);
@@ -606,8 +684,8 @@ body::before {
 .rdm-year-hdr { display:flex; align-items:center; gap:10px; margin:14px 0 8px; }
 .rdm-yr-pill { font-family:var(--mono); font-size:.68rem; font-weight:700; padding:3px 10px; border-radius:100px; white-space:nowrap; }
 .rdm-y1 { background:#EEEDFE; color:#3C3489; border:1px solid #AFA9EC; }
-.rdm-y2 { background:#1a2e22; color:#9FE1CB; border:1px solid #0F6E56; }
-.rdm-y3 { background:#2e1a14; color:#F5C4B3; border:1px solid #993C1D; }
+.rdm-y2 { background:#e9fbf3; color:#0F6E56; border:1px solid #9FE1CB; }
+.rdm-y3 { background:#fdeee8; color:#993C1D; border:1px solid #F5C4B3; }
 .rdm-yr-line { flex:1; height:1px; background:var(--border); }
 .rdm-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(158px,1fr)); gap:8px; margin-bottom:6px; }
 .rdm-card {
@@ -621,7 +699,7 @@ body::before {
   transition:transform .2s, border-color .2s;
 }
 .rdm-card:hover { transform:translateY(-3px); border-color:var(--accent); }
-.rdm-card.rdm-hl { border-color:#7F77DD; background:#1a1830; }
+.rdm-card.rdm-hl { border-color:#7F77DD; background:#f1f0fc; }
 .rdm-card-accent { position:absolute; top:0;left:0;right:0;height:2px; }
 .rdm-card-code { font-family:var(--mono); font-size:.62rem; color:var(--muted); letter-spacing:.07em; margin-bottom:4px; }
 .rdm-card-name { font-size:.78rem; font-weight:700; color:var(--text); line-height:1.3; margin-bottom:6px; }
@@ -635,7 +713,7 @@ body::before {
 .rdm-detail {
   display:none;
   margin-top:14px;
-  background:#16162a;
+  background:#fafbfd;
   border:1px solid var(--border);
   border-radius:16px;
   padding:22px 24px;
@@ -661,7 +739,7 @@ body::before {
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,.75);
+  background: rgba(20,20,30,.45);
   backdrop-filter: blur(8px);
   z-index: 5000;
   display: flex;
@@ -677,7 +755,7 @@ body::before {
   pointer-events: all;
 }
 .modal-box {
-  background: #16162a;
+  background: #fafbfd;
   border: 1px solid var(--border);
   border-radius: 24px;
   padding: 36px;
@@ -781,8 +859,8 @@ body::before {
   line-height: 1.6;
 }
 .modal-outcome {
-  background: linear-gradient(135deg, rgba(124,92,252,.12), rgba(92,244,252,.06));
-  border: 1px solid rgba(124,92,252,.3);
+  background: linear-gradient(135deg, rgba(79,109,245,.10), rgba(47,158,148,.06));
+  border: 1px solid rgba(79,109,245,.25);
   border-radius: 12px;
   padding: 14px 16px;
   font-family: var(--mono);
@@ -807,15 +885,16 @@ body::before {
   <button class="nav-dot" onclick="goTo(6)"></button>
   <button class="nav-dot" onclick="goTo(7)"></button>
   <button class="nav-dot" onclick="goTo(8)"></button>
+  <button class="nav-dot" onclick="goTo(9)"></button>
 </nav>
 <!-- ═══════════════════════════════════════
 SLIDE 1 — HERO
 ═══════════════════════════════════════ -->
 <section class="slide" id="slide-1">
   <div class="grid-bg"></div>
-  <div class="orb" style="width:500px;height:500px;background:radial-gradient(circle,rgba(124,92,252,.18),transparent 70%);top:-100px;left:-100px;animation:float 8s ease-in-out infinite"></div>
-  <div class="orb" style="width:400px;height:400px;background:radial-gradient(circle,rgba(252,92,125,.12),transparent 70%);bottom:-80px;right:-80px;animation:float 10s ease-in-out infinite reverse"></div>
-  <div class="orb" style="width:300px;height:300px;background:radial-gradient(circle,rgba(92,244,252,.1),transparent 70%);top:40%;right:20%;animation:float 12s ease-in-out infinite 2s"></div>
+  <div class="orb" style="width:500px;height:500px;background:radial-gradient(circle,rgba(79,109,245,.12),transparent 70%);top:-100px;left:-100px;animation:float 8s ease-in-out infinite"></div>
+  <div class="orb" style="width:400px;height:400px;background:radial-gradient(circle,rgba(226,112,138,.10),transparent 70%);bottom:-80px;right:-80px;animation:float 10s ease-in-out infinite reverse"></div>
+  <div class="orb" style="width:300px;height:300px;background:radial-gradient(circle,rgba(47,158,148,.08),transparent 70%);top:40%;right:20%;animation:float 12s ease-in-out infinite 2s"></div>
   <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center">
     <div class="hero-tag">📡 Softwarica College &nbsp;·&nbsp; Level 4</div>
     <h1 class="hero-title">
@@ -847,6 +926,17 @@ SLIDE 1 — HERO
         <span class="key">Learning outcomes</span>
       </div>
     </div>
+    <div class="teaching-team">
+      <div class="team-member">
+        <span class="team-role">Main Lecturer</span>
+        <span class="team-name">Siddhartha Neupane</span>
+      </div>
+      <div class="team-divider"></div>
+      <div class="team-member">
+        <span class="team-role">Teaching Assistant</span>
+        <span class="team-name">Pratyush Prajapati</span>
+      </div>
+    </div>
   </div>
   <div class="scroll-hint">scroll to explore</div>
 </section>
@@ -860,9 +950,9 @@ SLIDE 2 — MODULE AIMS
     <div class="aims-grid stagger">
       <div class="aim-card c1">
         <div class="aim-num">01</div>
-        <div class="aim-icon">🧠</div>
-        <h3>Formal patterns &amp; languages</h3>
-        <p>Understand how computers formally specify patterns, recognise languages, and model computation using state machines and regular expressions.</p>
+        <div class="aim-icon">🧮</div>
+        <h3>Data representation &amp; encoding</h3>
+        <p>Understand how computers represent, encode, and structure data — from binary and hexadecimal number systems to character encoding formats like ASCII and UTF-8.</p>
       </div>
       <div class="aim-card c2">
         <div class="aim-num">02</div>
@@ -982,16 +1072,8 @@ SLIDE 4 — TOPICS ROADMAP
         <span class="chip-arrow">→</span>
       </div>
       <div class="phase-row">
-        <span class="phase-label p3">Phase 3 — Weeks 9–11</span>
+        <span class="phase-label p3">Phase 3 — Weeks 10–11</span>
         <div class="phase-line"></div>
-      </div>
-      <div class="topic-chip clickable" onclick="openModal('fsm')">
-        <span class="t-icon">🔄</span>
-        <div>
-          <div class="t-label">State Machines</div>
-          <div class="t-week">Wk 9 · DFA, NFA, FSM diagrams</div>
-        </div>
-        <span class="chip-arrow">→</span>
       </div>
       <div class="topic-chip clickable" onclick="openModal('databases')">
         <span class="t-icon">🗄️</span>
@@ -1147,10 +1229,69 @@ SLIDE 6 — ASSESSMENT & CREDITS
   </div>
 </section>
 <!-- ═══════════════════════════════════════
+SLIDE 6b — ASSESSMENT COMPONENTS & RESOURCES
+═══════════════════════════════════════ -->
+<section class="slide" id="slide-6b">
+  <div class="section-inner">
+    <p class="section-eyebrow animate-on-enter">Summative work</p>
+    <h2 class="section-title animate-on-enter">Assessment <em>Components</em></h2>
+    <div class="assess-layout">
+      <div class="assess-block animate-on-enter">
+        <h3>🧾 Components &amp; tasks</h3>
+        <table class="assess-table">
+          <thead>
+            <tr>
+              <th>Component</th>
+              <th>Type</th>
+              <th>Credits</th>
+              <th>LOs assessed</th>
+              <th>Attempts</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Test</td>
+              <td>Core (P/F)</td>
+              <td class="center">5</td>
+              <td class="mono">1, 3</td>
+              <td class="center">3</td>
+            </tr>
+            <tr>
+              <td>Report (CW1)</td>
+              <td>Applied Core %</td>
+              <td class="center">15</td>
+              <td class="mono">1, 2, 3</td>
+              <td class="center">—</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="assess-note">
+          <strong>Test — Knowledge Check.</strong> A time-limited (1 hour) assessment demonstrating knowledge of core concepts from the module. Pass mark: 40%.
+        </div>
+        <div class="assess-note">
+          <strong>CW1 — Report (1,500 words).</strong> Discussing, demonstrating and reflecting upon a given set of tasks.
+        </div>
+        <div class="assess-note">
+          <strong>Re-assessment.</strong> Coursework re-assessment is by improving the submitted work, following feedback from the module leader.
+        </div>
+      </div>
+      <div class="assess-block animate-on-enter">
+        <h3>📚 Module resources</h3>
+        <p style="font-family:var(--mono);font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px">Recommended reading</p>
+        <ul class="reading-list">
+          <li>Lemmon, E. J. (1971). <em>Beginning Logic</em>. CRC Press.</li>
+          <li>Restall, G. (2004). <em>Logic: An Introduction</em>. Routledge.</li>
+          <li><em>CRC Handbook of Applied Cryptography</em> (2001) — free download at <a href="https://cacr.uwaterloo.ca/hac/" target="_blank" rel="noopener">cacr.uwaterloo.ca/hac</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══════════════════════════════════════
 SLIDE 7 — WHY THIS MATTERS
 ═══════════════════════════════════════ -->
 <section class="slide" id="slide-7">
-  <div class="orb" style="width:600px;height:600px;background:radial-gradient(circle,rgba(124,92,252,.12),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);animation:pulse 4s ease-in-out infinite"></div>
+  <div class="orb" style="width:600px;height:600px;background:radial-gradient(circle,rgba(79,109,245,.10),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);animation:pulse 4s ease-in-out infinite"></div>
   <div class="section-inner" style="position:relative;z-index:1;text-align:center">
     <p class="section-eyebrow animate-on-enter" style="text-align:center">why you should care</p>
     <h2 class="section-title animate-on-enter" style="text-align:center">This stuff is <em>everywhere</em></h2>
@@ -1169,11 +1310,6 @@ SLIDE 7 — WHY THIS MATTERS
         <span class="f-emoji">🤖</span>
         <span class="f-stat" style="color:var(--accent3)">O(n²)</span>
         <span class="f-label">Bad algorithmic choices have crashed production systems. Big-O matters.</span>
-      </div>
-      <div class="fact-card">
-        <span class="f-emoji">🧩</span>
-        <span class="f-stat" style="color:var(--accent4)">Regex</span>
-        <span class="f-label">Used in every IDE, every search engine, every form validator you've ever touched.</span>
       </div>
     </div>
   </div>
@@ -1238,7 +1374,7 @@ SLIDE 9 — READY
 ═══════════════════════════════════════ -->
 <section class="slide" id="slide-9">
   <div class="grid-bg"></div>
-  <div class="orb" style="width:400px;height:400px;background:radial-gradient(circle,rgba(124,92,252,.2),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);animation:pulse 3s ease-in-out infinite"></div>
+  <div class="orb" style="width:400px;height:400px;background:radial-gradient(circle,rgba(79,109,245,.18),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);animation:pulse 3s ease-in-out infinite"></div>
   <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center">
     <h2 class="ready-title">
       Let's <span style="background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">build</span><br>
@@ -1321,7 +1457,7 @@ const topics = {
   boolean: {
     icon: '⚡', week: 'Week 1 · Phase 1', title: 'Boolean Logic',
     desc: 'The bedrock of all digital computation. Every chip, every circuit, every computer decision ultimately reduces to Boolean logic. You\'ll learn to read and write the language of logic gates.',
-    color: '#7c5cfc',
+    color: '#4f6df5',
     items: [
       { title: 'Logic gates — AND, OR, NOT', detail: 'The three fundamental gates. Every computation in any processor is built from combinations of these.' },
       { title: 'Truth tables', detail: 'Systematically mapping all input combinations to their outputs. Essential for verifying logic circuits.' },
@@ -1335,7 +1471,7 @@ const topics = {
   sets: {
     icon: '🔵', week: 'Week 2 · Phase 1', title: 'Set Theory',
     desc: 'Sets are the mathematical language behind databases, search filters, type systems, and much more. If you\'ve ever used SQL WHERE clauses, you\'ve used set theory.',
-    color: '#5cf4fc',
+    color: '#2f9e94',
     items: [
       { title: 'Set notation & terminology', detail: 'Elements, membership (∈), empty set (∅), cardinality. The vocabulary every CS student must know.' },
       { title: 'Union (A ∪ B)', detail: 'All elements in either set. Think SQL UNION — combine two query results.' },
@@ -1349,7 +1485,7 @@ const topics = {
   numbers: {
     icon: '🔢', week: 'Weeks 3–4 · Phase 1', title: 'Number Systems',
     desc: 'Computers only understand 0s and 1s. Everything — your photos, music, messages — is ultimately binary. Understanding number systems lets you see what the machine actually sees.',
-    color: '#7c5cfc',
+    color: '#4f6df5',
     items: [
       { title: 'Binary (Base-2)', detail: 'The native language of computers. Count in binary, convert to decimal and back. Understand why computers use powers of 2.' },
       { title: 'Hexadecimal (Base-16)', detail: 'A compact shorthand for binary. Used everywhere: memory addresses, colour codes (#FF5733), MAC addresses, error codes.' },
@@ -1363,7 +1499,7 @@ const topics = {
   encoding: {
     icon: '📝', week: 'Week 5 · Phase 2', title: 'Encoding Formats',
     desc: 'Before data can be stored or transmitted, it must be encoded. This unit explains how text, binary data, and files are represented so computers and humans can both work with them.',
-    color: '#fcbc5c',
+    color: '#d69e4e',
     items: [
       { title: 'ASCII — the original standard', detail: '7-bit encoding for 128 characters. Every English letter, digit, and punctuation mark has an ASCII code. Still used in protocols and config files today.' },
       { title: 'Unicode & UTF-8', detail: 'ASCII couldn\'t handle Nepali, Arabic, Chinese, or emoji. Unicode assigns a number to every character in every language. UTF-8 is the dominant encoding of the web.' },
@@ -1376,7 +1512,7 @@ const topics = {
   hashing: {
     icon: '#️⃣', week: 'Week 6 · Phase 2', title: 'Hashing',
     desc: 'Hash functions are one of the most powerful and widely-used tools in computer science. They\'re inside every password system, every blockchain, and every file integrity check you\'ve ever used.',
-    color: '#fc5c7d',
+    color: '#e2708a',
     items: [
       { title: 'What is a hash function?', detail: 'A function that maps any input to a fixed-size output. Same input always produces same output. MD5 → 128 bits, SHA-256 → 256 bits.' },
       { title: 'Key properties: deterministic & one-way', detail: 'You can\'t reverse a hash to get the original input. "Pre-image resistance" is what makes hashing useful for passwords.' },
@@ -1390,7 +1526,7 @@ const topics = {
   pki: {
     icon: '🔑', week: 'Weeks 7–8 · Phase 2', title: 'PKI & Cryptography',
     desc: 'Public Key Infrastructure is how the entire internet stays secure. Every HTTPS connection, every signed software update, every encrypted message relies on PKI. You use it dozens of times a day.',
-    color: '#fcbc5c',
+    color: '#d69e4e',
     items: [
       { title: 'Symmetric vs asymmetric encryption', detail: 'Symmetric: same key to encrypt and decrypt (fast, but key sharing is hard). Asymmetric: public key encrypts, private key decrypts.' },
       { title: 'Key pairs — public & private keys', detail: 'Mathematically linked. Anything encrypted with the public key can only be decrypted with the private key. The private key never leaves your machine.' },
@@ -1401,24 +1537,10 @@ const topics = {
     ],
     outcome: '🎯 <strong>Links to LO2</strong> — PKI is the core of modern data security. After these weeks you can explain how any HTTPS connection works and why it\'s (or isn\'t) secure.'
   },
-  fsm: {
-    icon: '🔄', week: 'Week 9 · Phase 3', title: 'State Machines',
-    desc: 'Finite State Machines are a formal model of computation used everywhere — from traffic lights and vending machines to lexers, network protocols, and game AI. If a system has "states", it\'s an FSM.',
-    color: '#5cf4fc',
-    items: [
-      { title: 'States, transitions & inputs', detail: 'A system is always in one state. An input triggers a transition to the next state. Simple, powerful, and provably correct.' },
-      { title: 'FSM diagrams', detail: 'Draw circles for states, arrows for transitions, labels for inputs. You\'ll draw FSMs for real systems like turnstiles, login flows, and TCP connections.' },
-      { title: 'Deterministic FSMs (DFA)', detail: 'For each state + input, there is exactly one next state. Predictable and easy to implement.' },
-      { title: 'Non-deterministic FSMs (NFA)', detail: 'Multiple possible next states for the same input. Mathematically equivalent to DFAs but often easier to design.' },
-      { title: 'DFA ↔ NFA conversion', detail: 'Any NFA can be converted to an equivalent DFA. The subset construction algorithm — a key theoretical result.' },
-      { title: 'FSMs in real systems', detail: 'Network protocols (TCP handshake), parsers, game logic, vending machines, traffic light controllers. You\'ll recognise FSMs everywhere after this.' },
-    ],
-    outcome: '🎯 <strong>Links to LO3</strong> — FSMs are a model of how computation works. After this week you can formally specify the behaviour of any system with discrete states.'
-  },
   databases: {
     icon: '🗄️', week: 'Week 10 · Phase 3', title: 'Databases',
     desc: 'Nearly every application in existence — from Instagram to your college\'s student records — is built on a database. Understanding how data is stored, queried, and structured is essential for every developer.',
-    color: '#fc5c7d',
+    color: '#e2708a',
     items: [
       { title: 'Why databases exist', detail: 'Files are fine for a handful of records. Databases handle millions — with fast lookup, concurrent access, crash recovery, and security baked in.' },
       { title: 'Relational model & tables', detail: 'Data organised into rows and columns. Tables relate to each other via keys. The model invented by Edgar Codd in 1970 that still dominates today.' },
@@ -1432,7 +1554,7 @@ const topics = {
   arch: {
     icon: '💾', week: 'Weeks 10–11 · Phase 3', title: 'Storage & Architecture',
     desc: 'Understanding how a computer physically stores and processes data lets you write faster code, make better architecture decisions, and debug mysterious performance problems.',
-    color: '#fc5c7d',
+    color: '#e2708a',
     items: [
       { title: 'CPU components — ALU, registers, control unit', detail: 'The Arithmetic Logic Unit does the maths. Registers are the fastest storage (a few bytes). The control unit orchestrates everything.' },
       { title: 'Fetch–decode–execute cycle', detail: 'The heartbeat of every computer. Fetch the instruction from memory → decode what it means → execute it. Billions of times per second.' },
@@ -1446,7 +1568,7 @@ const topics = {
   algo: {
     icon: '📈', week: 'Week 12 · Phase 4', title: 'Algorithmic Complexity',
     desc: 'Two programs can solve the same problem — one in milliseconds, one in years. Complexity analysis tells you which is which before you write a single line of code.',
-    color: '#fcbc5c',
+    color: '#d69e4e',
     items: [
       { title: 'Big-O notation', detail: 'O(1), O(log n), O(n), O(n log n), O(n²), O(2ⁿ). A language for describing how an algorithm scales as input grows.' },
       { title: 'Best, worst, and average cases', detail: 'An algorithm might be O(1) on average but O(n) in the worst case. Knowing the difference prevents production disasters.' },
@@ -1460,7 +1582,7 @@ const topics = {
   compute: {
     icon: '∞', week: 'Week 13 · Phase 4', title: 'Incomputable Problems',
     desc: 'Some problems cannot be solved by any algorithm, no matter how powerful the computer or how long you wait. This is one of the most profound results in all of mathematics.',
-    color: '#5cf4fc',
+    color: '#2f9e94',
     items: [
       { title: 'Turing machines (conceptual)', detail: 'Alan Turing\'s abstract model of computation — a read/write head on an infinite tape. Any algorithm that can be run on any computer can be described as a Turing machine.' },
       { title: 'The Halting Problem', detail: 'Can a program tell if another program will eventually stop, or loop forever? Turing proved in 1936 that no such program can exist. Ever. Proof by contradiction.' },
@@ -1474,9 +1596,9 @@ const topics = {
   review: {
     icon: '🎓', week: 'Week 14 · Phase 4', title: 'Review & Assessment Prep',
     desc: 'The final week ties everything together. We revisit the big picture, connect ideas across all four phases, and make sure you\'re confident going into summative assessment.',
-    color: '#7c5cfc',
+    color: '#4f6df5',
     items: [
-      { title: 'Full module concept map', detail: 'How Boolean logic → encoding → cryptography → FSMs → architecture → algorithms all connect. The threads you\'ll trace in the exam.' },
+      { title: 'Full module concept map', detail: 'How Boolean logic → encoding → cryptography → architecture → algorithms all connect. The threads you\'ll trace in the exam.' },
       { title: 'Cross-topic Q&A session', detail: 'Bring your hardest questions. We work through anything that\'s unclear — open discussion, no topic off-limits.' },
       { title: 'Past paper walkthrough', detail: 'Go through sample exam questions together, discussing marking criteria and common mistakes.' },
       { title: 'Exam technique', detail: 'How to structure answers, manage time, handle questions you\'re unsure about. These skills are worth marks.' },
@@ -1542,12 +1664,12 @@ function closeModal(e) {
 
 // ── DEGREE ROADMAP ──────────────────────────────────────────
 const RDM_CAT = {
-  found: { color:'#7F77DD', tagBg:'#2a2450', tagText:'#AFA9EC', label:'foundation' },
-  sec:   { color:'#D85A30', tagBg:'#2e1a10', tagText:'#F0997B', label:'security' },
-  net:   { color:'#1D9E75', tagBg:'#0d2a1e', tagText:'#5DCAA5', label:'networking' },
-  cs:    { color:'#534AB7', tagBg:'#1e1c3a', tagText:'#AFA9EC', label:'core cs' },
-  legal: { color:'#BA7517', tagBg:'#2a1e08', tagText:'#EF9F27', label:'legal' },
-  adv:   { color:'#D4537E', tagBg:'#2a1020', tagText:'#ED93B1', label:'advanced' },
+  found: { color:'#7F77DD', tagBg:'#EDEBFB', tagText:'#5850C4', label:'foundation' },
+  sec:   { color:'#D85A30', tagBg:'#FBEDE7', tagText:'#B14A26', label:'security' },
+  net:   { color:'#1D9E75', tagBg:'#E7F8F1', tagText:'#127A58', label:'networking' },
+  cs:    { color:'#534AB7', tagBg:'#EDEBFA', tagText:'#453D9E', label:'core cs' },
+  legal: { color:'#BA7517', tagBg:'#FBF1E2', tagText:'#8F5A0E', label:'legal' },
+  adv:   { color:'#D4537E', tagBg:'#FCEDF2', tagText:'#AB3A62', label:'advanced' },
 };
 
 const RDM_MODS = {
@@ -1574,7 +1696,7 @@ const RDM_MODS = {
       feeds:'Professional framework for all engagements across Years 2 & 3', link:'Links to ST4015CMD: cryptography & data protection laws' },
     { code:'ST4015CMD', name:'Foundations of Computer Science', cat:'found', lo:'LOs: 1,6,10', highlight:true,
       desc:'The bedrock of the entire degree. Logic, cryptography, number systems, databases, algorithms — every hacking technique ultimately reduces to concepts taught here.',
-      topics:['Boolean logic & truth tables','Set theory & data modelling','Binary, hex & number systems','Encoding: ASCII, UTF-8, Base64','Hashing (SHA-256) & PKI','State machines','Databases & SQL','Algorithmic complexity & Big-O','Incomputable problems'],
+      topics:['Boolean logic & truth tables','Set theory & data modelling','Binary, hex & number systems','Encoding: ASCII, UTF-8, Base64','Hashing (SHA-256) & PKI','Databases & SQL','Algorithmic complexity & Big-O','Incomputable problems'],
       feeds:'Directly feeds every technical module across Years 2 & 3', link:'Core foundation — all arrows lead from here' },
   ],
   y2:[
