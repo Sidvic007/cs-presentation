@@ -131,42 +131,50 @@ body {
 }
 .teaching-team {
   display: flex;
-  align-items: center;
-  gap: 20px;
+  align-items: stretch;
+  gap: 28px;
   margin-top: 36px;
-  padding: 14px 26px;
+  padding: 16px 30px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 100px;
+  border-radius: 20px;
   animation: fadeUp .6s .35s ease both;
   flex-wrap: wrap;
   justify-content: center;
 }
 .team-member {
   display: flex;
-  align-items: baseline;
-  gap: 8px;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
 }
 .team-role {
   font-family: var(--mono);
-  font-size: .68rem;
+  font-size: .65rem;
   text-transform: uppercase;
   letter-spacing: .08em;
   color: var(--muted);
 }
 .team-name {
-  font-size: .88rem;
+  font-size: .9rem;
   font-weight: 700;
   color: var(--text);
 }
+.team-email {
+  font-family: var(--mono);
+  font-size: .7rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+.team-email:hover { text-decoration: underline; }
 .team-divider {
   width: 1px;
-  height: 16px;
+  align-self: stretch;
   background: var(--border);
 }
 @media (max-width: 500px) {
   .team-divider { display: none; }
-  .teaching-team { flex-direction: column; gap: 10px; padding: 16px 24px; }
+  .teaching-team { flex-direction: column; gap: 16px; padding: 18px 24px; }
 }
 .scroll-hint {
   position: absolute;
@@ -930,11 +938,13 @@ SLIDE 1 — HERO
       <div class="team-member">
         <span class="team-role">Main Lecturer</span>
         <span class="team-name">Siddhartha Neupane</span>
+        <a class="team-email" href="mailto:stw0084@softwarica.edu.np">stw0084@softwarica.edu.np</a>
       </div>
       <div class="team-divider"></div>
       <div class="team-member">
         <span class="team-role">Teaching Assistant</span>
         <span class="team-name">Pratyush Prajapati</span>
+        <a class="team-email" href="mailto:stw00175@softawrica.edu.np">stw00175@softawrica.edu.np</a>
       </div>
     </div>
   </div>
@@ -1129,6 +1139,9 @@ SLIDE 5 — HOW YOU'LL LEARN
   <div class="section-inner">
     <p class="section-eyebrow animate-on-enter">Your learning experience</p>
     <h2 class="section-title animate-on-enter">How we'll <em>learn together</em></h2>
+    <p class="assess-note animate-on-enter" style="max-width:760px;margin-bottom:32px">
+      Learning is facilitated through a mix of lectures, lab sessions, workshops, online activities and group work, with students expected to engage in both class and online discussion. The module also calls for additional guided reading and self-directed study to reinforce what's covered in timetabled sessions. Formative assessment prepares you for summative work and gives an early signal of your progress toward the module's learning outcomes.
+    </p>
     <div class="methods-grid stagger">
       <div class="method-card">
         <span class="m-icon">📖</span>
@@ -1160,6 +1173,16 @@ SLIDE 5 — HOW YOU'LL LEARN
         <h3>Formative feedback</h3>
         <p>3 check-in assessments across the module so you always know where you stand.</p>
       </div>
+    </div>
+    <div style="margin-top:32px">
+      <p style="font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:12px">Delivery &mdash; 200 total study hours</p>
+      <div class="credit-grid">
+        <div class="credit-box"><span class="cv">22</span><span class="ck">Lecture hrs</span></div>
+        <div class="credit-box"><span class="cv">44</span><span class="ck">Lab hrs</span></div>
+        <div class="credit-box"><span class="cv">134</span><span class="ck">Self-guided hrs</span></div>
+        <div class="credit-box"><span class="cv">200</span><span class="ck">Total hrs</span></div>
+      </div>
+      <p style="font-family:var(--mono);font-size:.68rem;color:var(--muted);margin-top:10px;line-height:1.6">All other delivery types (seminar, tutorial, workshop, studio, project supervision, fieldwork, placement, etc.) are 0 hours for this module.</p>
     </div>
   </div>
 </section>
